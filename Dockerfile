@@ -1,6 +1,9 @@
 # Use the official PHP 8.2 Apache image
 FROM php:8.2-apache
 
+# CRITICAL FIX: Install mysqli and other required extensions
+RUN docker-php-ext-install mysqli pdo pdo_mysql 
+
 # Copy your entire application source code into the web root
 COPY . /var/www/html/
 
