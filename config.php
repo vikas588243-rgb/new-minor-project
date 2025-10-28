@@ -1,18 +1,12 @@
 <?php
-// Database credentials
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'vicky');
-define('DB_PASSWORD', 'vickySi46441');
-define('DB_NAME', 'thedailydose_db');
+// config.php on Railway
+// Use the exact variable names provided by Railway
+define('DB_SERVER', $_ENV['mysql.railway.internal']); 
+define('DB_USERNAME', $_ENV['root']);
+define('DB_PASSWORD', $_ENV['BvYRwYAjDWbKdnnXJjdaCNqDfMdZmidR]);
+define('DB_NAME', $_ENV['railway']); // This should be 'railway' based on your last variable check
 
-// Attempt to connect to MySQL database
- $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-// Check connection
-if($conn === false){
-    die("ERROR: Could not connect. " . $conn->connect_error);
-}
-
-// Start session
-
+// Example of establishing the connection:
+// $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+// ...
 ?>
