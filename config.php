@@ -1,32 +1,20 @@
 <?php
-// config.php on Render/Railway
+// config.php on Render connecting externally to Railway
 
-// 1. Hostname/Server
-// Railway provides the internal host in the MYSQL_HOST variable.
-define('DB_SERVER', 'nozomi.proxy.rlwy.net:19298');
+// 1. Host/Server (Reads the custom variable defined on the Render dashboard)
+// This must contain the full external address and port for cross-cloud connection.
+define('DB_SERVER', $_ENV['RAILWAY_EXTERNAL_HOST']); 
 
-
-// 2. Username
-// Railway provides the username in the MYSQL_USER variable.
+// 2. Username (Reads the variable correctly mapped from Railway)
 define('DB_USERNAME', $_ENV['MYSQL_USER']);
 
-// 3. Password
-// Railway provides the password in the MYSQL_PASSWORD variable.
+// 3. Password (Reads the variable correctly mapped from Railway)
 define('DB_PASSWORD', $_ENV['MYSQL_PASSWORD']);
 
-// 4. Database Name
-// Railway provides the database name in the MYSQL_DATABASE variable.
-define('DB_NAME', $_ENV['MYSQL_DATABASE']);
+// 4. Database Name (Reads the variable correctly mapped from Railway)
+define('DB_NAME', $_ENV['MYSQL_DATABASE']); 
 
-// Example of establishing the connection:
+// Example of connection using the four defined constants:
 // $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 // ...
-// And call the connection normally
-$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME); 
-
-// Check if the connection constants were set correctly (optional debug)
-// echo "Host: " . DB_SERVER . "<br>";
-// echo "User: " . DB_USERNAME . "<br>";
-// echo "DB: " . DB_NAME . "<br>"; 
-
 ?>

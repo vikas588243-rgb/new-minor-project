@@ -5,6 +5,14 @@ require_once 'config.php';
 
 // Require login to access this page
 requireLogin();
+// Check if the connection exists (assuming $conn is defined in config.php)
+if (!isset($conn) || $conn->connect_error) {
+    header("location: upload.php?error=Database connection failed before upload.");
+    exit();
+}
+
+// ... rest of your code ...
+if (move_uploaded_file($_FILES["video"]["tmp_name"], $targetFilePath)) {}
 
 // Define variables and initialize with empty values
  $title = $description = "";
