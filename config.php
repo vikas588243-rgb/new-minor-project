@@ -3,7 +3,8 @@
 
 // 1. Hostname/Server
 // Railway provides the internal host in the MYSQL_HOST variable.
-define('DB_SERVER', $_ENV['MYSQL_HOST']); 
+define('DB_SERVER', 'nozomi.proxy.rlwy.net:19298');
+
 
 // 2. Username
 // Railway provides the username in the MYSQL_USER variable.
@@ -20,6 +21,8 @@ define('DB_NAME', $_ENV['MYSQL_DATABASE']);
 // Example of establishing the connection:
 // $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 // ...
+// And call the connection normally
+$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME); 
 
 // Check if the connection constants were set correctly (optional debug)
 // echo "Host: " . DB_SERVER . "<br>";
